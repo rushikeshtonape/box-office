@@ -1,8 +1,9 @@
 import React from "react";
+import { SeasonsWrapper, SeasonList } from "./Seasons.styled";
 
 const Seasons = ({ seasons }) => {
   return (
-    <div>
+    <SeasonsWrapper>
       <p>
         Seasons in Total :<span>{seasons.length}</span>
       </p>
@@ -12,16 +13,16 @@ const Seasons = ({ seasons }) => {
           {seasons.reduce((acc, seasons) => acc + seasons.episodeOrder, 0)}
         </span>
       </p>
-      <div>
+      <SeasonList>
         {seasons.map((seasons) => (
-          <div key={seasons.id}>
-            <div>
+          <div key={seasons.id} className="season-item">
+            <div className="left">
               <p>Seasons : {seasons.number}</p>
               <p>
                 Episode : <span>{seasons.episodeOrder}</span>
               </p>
             </div>
-            <div>
+            <div className="right">
               Aired:{" "}
               <span>
                 {seasons.premiereDate} - {seasons.endDate}
@@ -29,8 +30,8 @@ const Seasons = ({ seasons }) => {
             </div>
           </div>
         ))}
-      </div>
-    </div>
+      </SeasonList>
+    </SeasonsWrapper>
   );
 };
 

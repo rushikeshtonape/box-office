@@ -1,30 +1,35 @@
 import React from "react";
 import IMG_PLACEHOLDER from "../../image/image_not_found.jpg";
 import { Star } from "../Styled.js";
+import { MainDataWrapper, Headline, TagList } from "./ShowMainData.styled";
 
 const ShowMainData = ({ name, rating, summary, tags, image }) => {
   return (
-    <div>
+    <MainDataWrapper>
       <img src={image ? image.original : IMG_PLACEHOLDER} alt="show-cover" />
-      <div>
-        <div>
+      <div className="text-slide">
+        <Headline>
           <h1>{name}</h1>
           <div>
             <Star />
             <span>{rating.average || "N/A"}</span>
           </div>
-        </div>
-        <div dangerouslySet InnerHTML={{ _html: summary }} />
+        </Headline>
+        <div
+          className="summary"
+          dangerouslySetInnerHTML={{ __html: summary }}
+        />
+
         <div>
           Tags:{""}
-          <div>
+          <TagList>
             {tags.map((tag, i) => (
               <span key={i}>{tag}</span>
             ))}
-          </div>
+          </TagList>
         </div>
       </div>
-    </div>
+    </MainDataWrapper>
   );
 };
 
